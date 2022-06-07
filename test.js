@@ -15,6 +15,7 @@ let requiredRange1 = [null, 200];
 let requiredRange2 = [100, 350];
 let requiredRange3 = [200, null];
 
+//фильтрация
 function filterByRange(item = [], range = []) {
     if (range[0] === null && range[1] === null) {
         return true;
@@ -39,7 +40,29 @@ function filterByRange(item = [], range = []) {
     return range[0] <= item[0] && range[1] >= item[1];
 }
 
-const arr = courses.filter((item) =>
+const filteredCourses1 = courses.filter((item) =>
     filterByRange(item.prices, requiredRange1)
 );
-console.log(arr);
+const filteredCourses2 = courses.filter((item) =>
+    filterByRange(item.prices, requiredRange2)
+);
+const filteredCourses3 = courses.filter((item) =>
+    filterByRange(item.prices, requiredRange3)
+);
+
+//сортировка
+function sortingByPrice(a, b) {
+    if (a > b) {
+        return 1;
+    }
+    if (a < b) {
+        return -1;
+    }
+    return 0;
+}
+
+const sortingCourses = courses.sort((a, b) =>
+    sortingByPrice(a.prices[0], b.prices[0])
+);
+
+const sortingCourses2 = courses.sort((a, b) => a - b);

@@ -15,8 +15,8 @@ let requiredRange2 = [100, 350];
 let requiredRange3 = [200, null];
 
 //decision
-function filterByRange(arr, prop, range) {
-    function filterConditions(prop = [], range = []) {
+function filterByRange(arr = [], prop, range = []) {
+    function filterConditions(prop, range) {
         if (range[0] === null && range[1] === null) return true;
 
         if (range[0] === null) {
@@ -49,3 +49,8 @@ function filterByRange(arr, prop, range) {
     );
     return filteredArray.sort((a, b) => sortingByPrice(a[prop][0], b[prop][0]));
 }
+
+// using and checking
+const filteredCourses1 = filterByRange(courses, 'prices', requiredRange1);
+const filteredCourses2 = filterByRange(courses, 'prices', requiredRange2);
+const filteredCourses3 = filterByRange(courses, 'prices', requiredRange3);
